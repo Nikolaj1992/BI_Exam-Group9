@@ -14,8 +14,8 @@ def merge_dataframes(dfs, labels, label_column='source'):
         df[label_column] = label
     return pd.concat(dfs, ignore_index=True)
 
-def remove_missing(df):
-    return df.dropna()
+def remove_missing(df, columns=None):
+    return df.dropna(subset=columns) if columns else df.dropna()
 
-def remove_duplicates(df):
-    return df.drop_duplicates()
+def remove_duplicates(df, subset=None):
+    return df.drop_duplicates(subset=subset)
