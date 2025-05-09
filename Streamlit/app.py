@@ -1,6 +1,7 @@
 import streamlit as st
 import read_image
 import read_api
+import problem_formulation as pf
 
 from PIL import Image
 logo = Image.open('./media/esc.jpg')
@@ -16,15 +17,16 @@ def show_homepage():
 # Main function that runs the app
 def main():
     st.sidebar.title("Navigation")
-    page = st.sidebar.selectbox("Choose a page", ["Homepage", "Picture Analyzer", "ApiReader"])
+    page = st.sidebar.selectbox("Choose a page", ["Homepage", "Problem Formulation", "Picture Analyzer", "ApiReader"])
 
     if page == "Homepage":
         show_homepage()
+    elif page == "Problem Formulation":
+        pf.show_problem_formulation()  
     elif page == "Picture Analyzer":
         read_image.participant_analyzer()
-    elif page =="ApiReader":
+    elif page == "ApiReader":
         read_api.fetch_eurovision_data()
-    
 
 if __name__ == "__main__":
     main()
