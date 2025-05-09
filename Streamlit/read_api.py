@@ -34,8 +34,8 @@ def fetch_eurovision_data():
 
     # Only fetch data when button is clicked
     if st.button("Fetch Eurovision Data"):
-        # Ensure the Json directory exists
-        json_dir = "Json"
+        # Ensure the Json directory exists in the Data folder one level up
+        json_dir = os.path.join("..", "Data", "Json")
         os.makedirs(json_dir, exist_ok=True)
 
         # Build file path
