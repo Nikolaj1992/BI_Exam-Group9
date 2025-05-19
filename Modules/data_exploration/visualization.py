@@ -30,12 +30,12 @@ def countplot_comparison(df_list, labels, category_col, hue_col=None, title_pref
     plt.tight_layout()
     plt.show()
 
-def boxplot(data=None, x=None, y=None, title='Boxplot'):
+def boxplot(data=None, x=None, y=None, title='Boxplot', xlabel=None, ylabel=None):
     plt.figure(figsize=(6, 4))
     sbs.boxplot(data=data, x=x, y=y)
     plt.title(title)
-    plt.xlabel(x if x else '')
-    plt.ylabel(y if y else '')
+    plt.xlabel(xlabel if xlabel else x)
+    plt.ylabel(ylabel if ylabel else y)
     plt.tight_layout()
     plt.show()
 
