@@ -4,7 +4,7 @@ import plotly.express as px
 import pycountry
 
 st.set_page_config(layout="wide")
-st.title("Eurovision Clusters by Country")
+st.title("Eurovision Clusters by Country - made with K-means")
 st.subheader("Made out of Year, Country, Style, and final_total_points", divider='rainbow')
 
 def load_data():
