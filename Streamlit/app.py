@@ -11,11 +11,10 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-st.title("MP3")
-st.subheader("Linear Regression, Classification, Clustering", divider="rainbow")
+st.title("Exam project")
+st.subheader("This project is a analysis of the Eurovision Song Contest", divider="rainbow")
 st.image(logo, width = 700 )
 
-st.subheader("This project is a analysis of the Eurovision Song Contest", divider="rainbow")
 st.write("Made by: Jenny, David, Nikolaj and Patrick")
 st.write("Sem 4, BI, 2025")
 
