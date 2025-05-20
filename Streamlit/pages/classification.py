@@ -45,7 +45,7 @@ def load_confusion_matrix_image():
 if st.button("Show Confusion Matrix and Metrics"):
     img = load_confusion_matrix_image()
     if img:
-        st.image(img, caption='Naive Bayes Confusion Matrix', width=400)
+        st.image(img, caption='Naive Bayes Confusion Matrix', width=600)
     else:
         st.error("Confusion matrix image not found.")
     
