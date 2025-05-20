@@ -16,6 +16,13 @@ def iqr(data):
     q3, q1 = np.percentile(data, [75, 25])
     return q3 - q1
 
+def remove_outliers_fix(df, data):
+    q1 = data.quantile(0.25)
+    q3 = data.quantile(0.75)
+    IQR = q3 - q1
+    condition = (data >= (q1 - 1.5 * IQR)) & (data <= (q3 + 1.5 * IQR))
+    return df[condition].copy()
+
 ''' Example: remove_outliers(df, df['length']) '''
 def remove_outliers(df, data: List):
     q1 = data.quantile(.25)
