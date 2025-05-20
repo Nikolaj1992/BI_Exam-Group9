@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import seaborn as sbs
 import numpy as np
+import sys
 
 import matplotlib.pyplot as plt
 
@@ -30,14 +31,22 @@ def countplot_comparison(df_list, labels, category_col, hue_col=None, title_pref
     plt.tight_layout()
     plt.show()
 
-def boxplot(data=None, x=None, y=None, title='Boxplot', xlabel=None, ylabel=None):
-    plt.figure(figsize=(6, 4))
-    sbs.boxplot(data=data, x=x, y=y)
-    plt.title(title)
-    plt.xlabel(xlabel if xlabel else x)
-    plt.ylabel(ylabel if ylabel else y)
-    plt.tight_layout()
-    plt.show()
+def boxplot(data=None, x=None, y=None, title='Boxplot', xlabel=None, ylabel=None, fig=None, ax=None):
+    if not fig or not ax:
+        fig, ax = plt.subplots(figsize=(6, 4))
+    #plt.figure(figsize=(6, 4))
+    sbs.boxplot(data=data, x=x, y=y, ax=ax)
+    ax.set_title(title)
+    ax.set_xlabel(xlabel if xlabel else x)
+    ax.set_ylabel(ylabel if ylabel else y)
+    #plt.title(title)
+    #plt.xlabel(xlabel if xlabel else x)
+    #plt.ylabel(ylabel if ylabel else y)
+    fig.tight_layout()
+    if 'streamlit' not in sys.modules:
+        plt.show()
+        return
+    return fig
 
 def barplot(df, x_col, y_col=None, agg_func='mean', title='Bar Plot', xlabel=None, ylabel=None, hue_col=None):
     # Handle aggregation if no y_col is provided
