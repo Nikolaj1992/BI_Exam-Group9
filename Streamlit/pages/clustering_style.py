@@ -23,6 +23,12 @@ start, end = st.slider(
 df_filtered = df[(df['year'] >= start) & (df['year'] <= end)]
 st.write(f"Showing data from {start} to {end} ({len(df_filtered)} entries)")
 
+# ——— Random sample toggle ———
+show_sample = st.toggle("Show Random Sample (5 rows)")
+
+if show_sample:
+    st.dataframe(df_filtered.sample(5))
+
 # ——— Aggregate to dominant cluster per country ———
 country_cluster = (
     df_filtered
@@ -52,3 +58,10 @@ fig = px.choropleth(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
+# ——— Silhouette plot toggle ———
+st.subheader("Clustering Evaluation: Silhouette Plot")
+show_plot = st.toggle("Show Silhouette Plot")
+
+if show_plot:
+    st.image("../images/silhouette_plot.png", caption="Silhouette Plot", use_column_width=True)
