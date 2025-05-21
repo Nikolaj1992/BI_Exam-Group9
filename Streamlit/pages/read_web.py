@@ -1,18 +1,15 @@
 import streamlit as st
 import sys
 import os
+from langchain_ollama import OllamaEmbeddings
+from langchain_ollama.llms import OllamaLLM
+from langchain_core.vectorstores import InMemoryVectorStore
+
 
 # Add the utils folder (two levels up) to sys.path
 utils_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'modules', 'utils'))
 sys.path.append(utils_path)
-
-from helpers import (
-    load_web_page,
-    split_web_text,
-    store_web_docs,
-    retrieve_docs,
-    answer_question,
-)
+from helpers import *
 
 st.set_page_config(page_title="Web Q&A with LLM", layout="wide")
 st.title("🌐 Web Reader")
