@@ -23,7 +23,7 @@ st.markdown("""
 - Linear Regression for Eurovision Final Results
 - Classification of Eurovision Winners
 - Clustering of Countries by Voting Patterns
-- **Performance Order Analysis** (New!) - Explore how the order of performances influences final results!
+- Performance Order Analysis
 
 Navigate through the analyses using the sidebar.
 """)
