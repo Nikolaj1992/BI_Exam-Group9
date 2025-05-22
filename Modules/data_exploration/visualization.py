@@ -49,11 +49,6 @@ def boxplot(data=None, x=None, y=None, title='Boxplot', xlabel=None, ylabel=None
         return
     return fig
 
-def interactive_boxplot(data, x, y, title='Interactive Boxplot', xlabel=None, ylabel=None):
-    fig = px.box(data, x=x, y=y, points="all", title=title,
-                 labels={x: xlabel or x, y: ylabel or y})
-    return fig
-
 def barplot(df, x_col, y_col=None, agg_func='mean', title='Bar Plot', xlabel=None, ylabel=None, hue_col=None):
     # Handle aggregation if no y_col is provided
     if y_col is None:
@@ -71,15 +66,6 @@ def barplot(df, x_col, y_col=None, agg_func='mean', title='Bar Plot', xlabel=Non
     plt.xlabel(xlabel if xlabel else x_col.capitalize())
     plt.ylabel(ylabel if ylabel else y_col.capitalize())
     plt.show()
-
-def tooltip_barplot(data, x_col, y_col, title='Barplot with Tooltips', xlabel=None, ylabel=None):
-    fig = px.bar(
-        data, x=x_col, y=y_col,
-        hover_data={x_col: True, y_col: ':.2f'},
-        title=title,
-        labels={x_col: xlabel or x_col, y_col: ylabel or y_col}
-    )
-    return fig
 
 def lmplot(df, x, y, hue=None, title='Linear Regression Plot', figsize=(6, 4)):
     plt.figure(figsize=figsize)
@@ -118,7 +104,8 @@ def zscore_heatmap(zscores, title='Z-Score Heatmap'):
     z_df = pd.DataFrame(zscores).T if isinstance(zscores, dict) else zscores
     fig = px.imshow(z_df,
                     color_continuous_scale='RdBu_r',
-                    text_auto=True,
+                    text_auto=".2f",
                     labels=dict(color="Z-Score"),
                     title=title)
+    fig.update_traces(hovertemplate="Draw Position: %{x}<br>Z-Score: %{z:.2f}")
     return fig

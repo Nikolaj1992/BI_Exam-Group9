@@ -119,6 +119,18 @@ position_2_z_finals = z_scores_finals[draw_position_stats_finals.index == 2]
 
 z_scores_finals
 
+st.write("To better visualize our Z-Scores, and how each draw position deviates from the overall average performance, we've plotted the Z-scores into a heatmap with a color gradient. Our color gradient (warm to cold) highlights these deviations. Positive Z-scores in red indicate draw positions that, on average, result in worse final places, while negative Z-scores in blue indicate draw positions that result in better final places. Thus this heatmap makes it clear which draw positions tend to underperform or outperform - relative to the average.")
+
+# Z-Score Heatmap
+grouped_means = finals_df.groupby('final_draw_position')['final_place'].mean()
+z_scores = pd.DataFrame({
+    'Draw Position': grouped_means.index,
+    'Z-Score': zscore(grouped_means)
+}).set_index('Draw Position').T
+st.plotly_chart(de.vs.zscore_heatmap(z_scores, title='Z-Score Heatmap of Mean Final Places by Draw Position'))
+
+st.write("A Z-Score between ±1.96 has a 95% confidence level, meaning there's only a 5% chance we got this result by random chance. This also means that any Z-Scores outside this range are so far from the mean, whilst there being a less than 5% chance of it being random, that we can say those are statsitical outliers.")
+
 # Z-Score Explanations
 if exclude_outlier:
     st.markdown("""
