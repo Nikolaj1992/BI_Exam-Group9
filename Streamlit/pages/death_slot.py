@@ -2,6 +2,7 @@ import streamlit as st
 import sys
 import os
 
+# So we can correctly locate data and also our modules
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 import numpy as np, pandas as pd, seaborn as sbn, matplotlib.pyplot as plt, joblib
