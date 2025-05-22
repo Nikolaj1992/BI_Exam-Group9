@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
 import seaborn as sbs
 import numpy as np
+import pandas as pd
 import sys
-
-import matplotlib.pyplot as plt
+import plotly.express as px
+import plotly.graph_objects as go
 
 def histogram(data, title='Histogram'):
     # Loop through numeric columns
@@ -80,7 +81,31 @@ def scatter_plot(x, y, title='Scatter Plot'):
     plt.ylabel('Y')
     plt.show()
 
+def scatter_3d(data, x, y, z, color=None, size=None, title='3D Scatter Plot', xlabel=None, ylabel=None, zlabel=None):
+    fig = px.scatter_3d(data, x=x, y=y, z=z, color=color, size=size, title=title)
+    fig.update_layout(scene=dict(
+        xaxis_title=xlabel or x,
+        yaxis_title=ylabel or y,
+        zaxis_title=zlabel or z
+    ),margin=dict(
+        l=0, 
+        r=0, 
+        b=0, 
+        t=40
+    ))
+    return fig
+
 def correlation_heatmap(dataframe, title='Correlation Heatmap'):
     sbs.heatmap(dataframe.corr(), annot=True, cmap='coolwarm')
     plt.title(title)
     plt.show()
+
+def zscore_heatmap(zscores, title='Z-Score Heatmap'):
+    z_df = pd.DataFrame(zscores).T if isinstance(zscores, dict) else zscores
+    fig = px.imshow(z_df,
+                    color_continuous_scale='RdBu_r',
+                    text_auto=".2f",
+                    labels=dict(color="Z-Score"),
+                    title=title)
+    fig.update_traces(hovertemplate="Draw Position: %{x}<br>Z-Score: %{z:.2f}")
+    return fig

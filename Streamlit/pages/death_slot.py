@@ -5,6 +5,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 import numpy as np, pandas as pd, seaborn as sbn, matplotlib.pyplot as plt, joblib
+import plotly.express as px
 
 from Modules import utils as utl
 from Modules import data_exploration as de
@@ -27,14 +28,34 @@ if exclude_outlier:
     # Remove the 6th-place outlier for position 2, dynamically changes page
     finals_df = finals_df[~((finals_df['final_draw_position'] == 2) & (finals_df['final_place'] == 6))]
 
+# Year filtering
+years = sorted(finals_df['year'].unique())
+selected_years = st.slider("Select Year Range", min_value=int(min(years)), max_value=int(max(years)), value=(2009, 2023))
+finals_df = finals_df[(finals_df['year'] >= selected_years[0]) & (finals_df['year'] <= selected_years[1])]
+
+st.write("Feel free to adjust a year range to see data for only those years. Keep in mind however, that conclusions and the overall analysis is still based on the full dataset with all years included. The scatter plot below gives an idea of dataset.")
+
+# 3D Scatter Plot
+st.plotly_chart(
+    de.vs.scatter_3d(
+        finals_df,
+        x='final_draw_position', y='year', z='final_place',
+        color='final_place',
+        title='3D Scatter: Draw Position vs Year vs Final Place',
+        xlabel='Final Draw Position',
+        ylabel='Year',
+        zlabel='Final Place'
+    )
+)
+
 st.markdown("""
 #### EDA (Exploratory Data Analysis) - Does position 2 stand out?
 """)
-# Summary Statistics with outliers
+# Summary Statistics
 draw_position_stats_finals = finals_df.groupby('final_draw_position')['final_place'].agg(['count', 'mean', 'median', 'std']).sort_index()
 draw_position_stats_finals.loc[2]
 
-# Boxplot & Barplot with outliers
+# Boxplot & Barplot
 st.subheader("Boxplot & Barplot of Final Place by Draw Position")
 fig, ax = plt.subplots()
 de.vs.boxplot(data=finals_df, x='final_draw_position', y='final_place', title='Final Place by Draw Position', 
@@ -97,6 +118,18 @@ z_scores_finals = zscore(draw_position_means_finals)
 position_2_z_finals = z_scores_finals[draw_position_stats_finals.index == 2]
 
 z_scores_finals
+
+st.write("To better visualize our Z-Scores, and how each draw position deviates from the overall average performance, we've plotted the Z-scores into a heatmap with a color gradient. Our color gradient (warm to cold) highlights these deviations. Positive Z-scores in red indicate draw positions that, on average, result in worse final places, while negative Z-scores in blue indicate draw positions that result in better final places. Thus this heatmap makes it clear which draw positions tend to underperform or outperform - relative to the average.")
+
+# Z-Score Heatmap
+grouped_means = finals_df.groupby('final_draw_position')['final_place'].mean()
+z_scores = pd.DataFrame({
+    'Draw Position': grouped_means.index,
+    'Z-Score': zscore(grouped_means)
+}).set_index('Draw Position').T
+st.plotly_chart(de.vs.zscore_heatmap(z_scores, title='Z-Score Heatmap of Mean Final Places by Draw Position'))
+
+st.write("A Z-Score between ±1.96 has a 95% confidence level, meaning there's only a 5% chance we got this result by random chance. This also means that any Z-Scores outside this range are so far from the mean, whilst there being a less than 5% chance of it being random, that we can say those are statsitical outliers.")
 
 # Z-Score Explanations
 if exclude_outlier:
