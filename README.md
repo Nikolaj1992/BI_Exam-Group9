@@ -14,4 +14,4 @@ Hypotheses:
 - Hypothesis 2: Contestants who perform in the last third of the show receive higher average scores than those performing in the first third of the show.
 - Hypothesis 3: Slot 2 is often referred to as the “death slot” as no contestant performing at this position has ever won a final, and consistently rank lower than other positions, so a song performing second will perform worse in the final result than it would otherwise.
 - Hypothesis 4: Voting patterns differ between juries and the televote in regards to the running order. The televote appears more influenced by when a song is performed compared to the juries.
-
+Hypothesis 5: The choice of music style has a big impact on the final result.
