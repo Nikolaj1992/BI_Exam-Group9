@@ -32,13 +32,20 @@ question = st.text_input("Ask a question based on the webpage:")
 if question:
     with st.spinner("Loading, processing, and answering..."):
         try:
+            # You already have these initialized
+            embeddings = OllamaEmbeddings(model="llama3.2:3b")
+            vecDB = InMemoryVectorStore(embeddings)
+            llm = OllamaLLM(model="gemma3:12b")
+
+            # Load and process web content
             doc = load_web_page(url_to_use)
             text_chunks = split_web_text(doc)
-            store_web_docs(text_chunks)
+            store_web_docs(text_chunks, vecDB)
 
-            retrieved = retrieve_docs(question)
+            # Retrieve and answer
+            retrieved = retrieve_docs(question, vecDB)
             if retrieved:
-                answer = answer_question(question, retrieved)
+                answer = answer_question(question, retrieved, llm)
                 st.markdown("### 🤖 Answer")
                 st.write(answer)
                 with st.expander("🔍 Retrieved context chunks"):
