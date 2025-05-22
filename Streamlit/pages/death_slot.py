@@ -33,7 +33,20 @@ years = sorted(finals_df['year'].unique())
 selected_years = st.slider("Select Year Range", min_value=int(min(years)), max_value=int(max(years)), value=(2009, 2023))
 finals_df = finals_df[(finals_df['year'] >= selected_years[0]) & (finals_df['year'] <= selected_years[1])]
 
-st.write("Feel free to adjust a year range to see data for only those years. Keep in mind however, that conclusions and the overall analysis is still based on the full dataset with all years included.")
+st.write("Feel free to adjust a year range to see data for only those years. Keep in mind however, that conclusions and the overall analysis is still based on the full dataset with all years included. The scatter plot below gives an idea of dataset.")
+
+# 3D Scatter Plot
+st.plotly_chart(
+    de.vs.scatter_3d(
+        finals_df,
+        x='final_draw_position', y='year', z='final_place',
+        color='final_place',
+        title='3D Scatter: Draw Position vs Year vs Final Place',
+        xlabel='Final Draw Position',
+        ylabel='Year',
+        zlabel='Final Place'
+    )
+)
 
 st.markdown("""
 #### EDA (Exploratory Data Analysis) - Does position 2 stand out?
