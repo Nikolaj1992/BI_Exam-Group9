@@ -18,11 +18,11 @@ def show_linear_regression():
     year = st.number_input("Year", min_value=2000, max_value=2025, value=2023)
     semi_final = st.number_input("Semifinal", min_value=1, max_value=2, value=1)
     semi_draw_position = st.number_input("Semifinal Draw Position", min_value=1, max_value=26, value=15)
-    semi_total_points = st.number_input("Total Points", min_value=0.0, value=250.0)
+    semi_total_points = st.number_input("Total Points", min_value=0.0, value=300.0)
 
     # Input fields for optional features
     semi_televote_points = st.number_input("Televote Points", min_value=0.0, value=150.0)
-    semi_jury_points = st.number_input("Jury Points", min_value=0.0, value=100.0)
+    semi_jury_points = st.number_input("Jury Points", min_value=0.0, value=150.0)
 
     # Make prediction when button is pressed
     if st.button("Predict Final Place"):
