@@ -4,3 +4,13 @@ langchain_community
 langchain_ollama
 selenium
 unstructured[pdf]
+yellowbrick
+pycountry
+kaleido
+scikit-learn
+matplotlib
+plotly
+
+# System dependencies required (not installed via pip):
+# - poppler (for PDF parsing)
+# - tesseract (for OCR)
