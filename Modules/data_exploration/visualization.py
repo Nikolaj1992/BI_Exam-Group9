@@ -81,8 +81,8 @@ def scatter_plot(x, y, title='Scatter Plot'):
     plt.ylabel('Y')
     plt.show()
 
-def scatter_3d(data, x, y, z, color=None, size=None, title='3D Scatter Plot', xlabel=None, ylabel=None, zlabel=None):
-    fig = px.scatter_3d(data, x=x, y=y, z=z, color=color, size=size, title=title)
+def scatter_3d(data, x, y, z, color=None, size=None, title='3D Scatter Plot', xlabel=None, ylabel=None, zlabel=None, hover_data=None):
+    fig = px.scatter_3d(data, x=x, y=y, z=z, color=color, size=size, title=title, hover_data=hover_data)
     fig.update_layout(scene=dict(
         xaxis_title=xlabel or x,
         yaxis_title=ylabel or y,

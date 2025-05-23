@@ -45,7 +45,8 @@ st.plotly_chart(
         title='3D Scatter: Draw Position vs Year vs Final Place',
         xlabel='Final Draw Position',
         ylabel='Year',
-        zlabel='Final Place'
+        zlabel='Final Place',
+        hover_data=['country', 'style']
     )
 )
 
