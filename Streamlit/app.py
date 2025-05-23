@@ -5,7 +5,7 @@ from PIL import Image
 logo = Image.open('./media/esc.jpg')
 
 st.set_page_config(
-    page_title="MP3",
+    page_title="Exam",
     page_icon="🧊",
     layout="wide",
     initial_sidebar_state="expanded",

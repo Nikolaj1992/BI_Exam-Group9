@@ -47,7 +47,7 @@ def readTabData(tab):
         y = st.selectbox('**Select the measure, Y**', df.columns)     
         st.write(y)
 
-        # ddf = pd.read_csv('/Users/tdi/Documents/Holodeck/Holodeck/middle.csv')  
+         
         df = df.astype({x: str})
         
         #sy = df.groupby([x, z]).size().reset_index(name='count of (' + y + ')')
@@ -124,8 +124,5 @@ if st.button(":green[Explore]"):
 
 
 
-# save fig
-# import matplotlib.pyplot as pl
-# fig = pl.hist(a,normed=0)
-# pl.savefig("abc.png")
+
 
