@@ -12,6 +12,7 @@ kaleido
 scikit-learn
 matplotlib
 plotly
+scipy
 
 # System dependencies required (not installed via pip):
 # - poppler (for PDF parsing)
