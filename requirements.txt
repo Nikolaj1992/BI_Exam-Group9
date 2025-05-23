@@ -16,3 +16,6 @@ plotly
 # System dependencies required (not installed via pip):
 # - poppler (for PDF parsing)
 # - tesseract (for OCR)
+
+# not all groupmembers have been able to get tesseract working
+# run !pip install -r requirements.txt for implementation 
