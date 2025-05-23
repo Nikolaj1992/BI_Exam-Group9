@@ -107,19 +107,18 @@ def charts():
 
 tab = st.sidebar.file_uploader("Choose a file with tab data (e.g. MS Excel of file of type .csv)")
 
+# Beware that we silently ignore minor errors here...
 if tab is not None:
     try:
         sy, x, y, z = readTabData(tab)
-    except Exception as e:
-        st.error(f"Error reading uploaded file: {e}")
-        sy = x = y = z = None
+    except:
+        pass
 else:
     try:
         st.sidebar.info(f"No file uploaded. Using default file: `{os.path.basename(DEFAULT_FILE_PATH)}`")
         sy, x, y, z = readTabData(DEFAULT_FILE_PATH)
-    except Exception as e:
-        st.error(f"Error reading default file: {e}")
-        sy = x = y = z = None
+    except:
+        pass
         
 
 st.subheader("Data Visualisation", divider='rainbow')
