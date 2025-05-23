@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import random
 import webbrowser
+import os
 import io
 from io import StringIO, BytesIO
 
@@ -19,7 +20,7 @@ from streamlit.components.v1 import html
 import kaleido
 import platform
 
-
+DEFAULT_FILE_PATH = "../Data/eurovision_cleaned.csv"
 
 
 
@@ -36,7 +37,7 @@ st.success("👈 :green[Select a file using the file loading tool on the left]")
 tab =''
 
 def readTabData(tab):
-        df = pd.read_csv(tab)      
+        df = pd.read_csv(tab)
         st.dataframe(df, use_container_width=True)
         st.write('Two of dataframe attributes (columns) will be used as (independent) dimensions for exploring the dynamics of a third (dependent) one, called meassure.')
 
@@ -104,19 +105,27 @@ def charts():
                # pio.write_image(fig2, "./media/MDskat.svg")   
                 
 
+tab = st.sidebar.file_uploader("Choose a file with tab data (e.g. MS Excel of file of type .csv)")
 
+if tab is not None:
+    try:
+        sy, x, y, z = readTabData(tab)
+    except Exception as e:
+        st.error(f"Error reading uploaded file: {e}")
+        sy = x = y = z = None
+else:
+    try:
+        st.sidebar.info(f"No file uploaded. Using default file: `{os.path.basename(DEFAULT_FILE_PATH)}`")
+        sy, x, y, z = readTabData(DEFAULT_FILE_PATH)
+    except Exception as e:
+        st.error(f"Error reading default file: {e}")
+        sy = x = y = z = None
         
-try:    
-    tab = st.sidebar.file_uploader("Choose a file with tab data (e.g. MS Excel of file of type .csv)")
-    if tab is not None:
-        sy,x,y,z = readTabData(tab)  
-except:
-    pass
 
 st.subheader("Data Visualisation", divider='rainbow')
 st.success("👆 Select the attributes of interest")  
 
-if st.button(":green[Explore]"):
+if st.button(":green[Explore]") and sy is not None:
             st.subheader("Explore the Data in Diagrams")
             st.write('Click on tabs to explore')
             container = st.container()
