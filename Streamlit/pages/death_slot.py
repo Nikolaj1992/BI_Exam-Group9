@@ -13,7 +13,9 @@ from Modules import data_exploration as de
 from scipy.stats import zscore, ttest_ind
 
 st.title("Death-Slot Analysis - 2nd Draw Position")
-st.subheader("Let's see if the infamous 2nd draw position aka the 'Death Slot' is in fact as bad as the name suggests. No entry in Eurovision has ever won a final from this starting position, is that just chance?", divider='rainbow')
+st.subheader("Let's see if the infamous 2nd draw position aka the 'Death Slot' is in fact as bad as the name suggests. No entry in Eurovision has ever won from this starting position, is that just chance? Let's examine if there's truth to this notion for the finals.", divider='rainbow')
+
+st.write("**Hypothesis 3:** Slot 2 is often referred to as the “death slot” as no contestant performing at this position has ever won Eurovision, and consistently rank lower than other positions, so a song performing second will perform worse in the final result than it would otherwise.")
 
 # Load data
 csv_finals_path = '../Data/finalists_cleaned.csv'
@@ -185,7 +187,7 @@ if exclude_outlier:
 
 Using Welch's t-test again, comparing position 2 versus all other draw positions, we get a new smaller p-value of 0.000004 and a t-statistic of 6.78. The t-statistic indicates that the difference between the mean final placements of these two groups is approx. 6.8 standard errors apart, which is strong evidence of a meaningful difference. 
 Our result when comparing position 2 to all other positions combined, is that we observe significantly worse average placement for postion 2. This must be taken with a slight grain of salt however as we are comparing entries at position 2 with entries from all other positions - creating an imbalance as we do know other draw positions have similar, if not as profound, disadvantages. However, this score is still significant enough that even compared against a field of positions, that we can say it is a worse draw position.
-The new p-value is even lower. Our hypothesis being that starting at 2nd draw position aka the Death-Slot is signifanctly worse than any other draw position, this means our null hypothesis is that there is no difference. If the p-value is smaller than 0.05 that's ordinarily enough to reject the null hypothesis. At just 0.000004 we can easily reject the null hypothesis again - strongly suggesting that the 2nd position does in fact perform statistically worse. Our original hypothesis — that position 2 performs significantly worse — is well supported here.
+The new p-value is even lower. Our hypothesis, as written at the top of the page, being that starting at 2nd draw position aka the Death-Slot is worse than any other draw position, this means our null hypothesis is that there is no difference. If the p-value is smaller than 0.05 that's ordinarily enough to reject the null hypothesis. At just 0.000004 we can easily **reject the null hypothesis** again - strongly suggesting that the 2nd position does in fact perform statistically worse. Our original hypothesis — that position 2 performs worse — is well supported here.
 """)
 else:
     st.markdown("""
@@ -197,5 +199,5 @@ else:
 Using Welch's t-test, comparing position 2 versus all other draw positions, we've gotten our p-value and t-statistic.
 The t-statistic indicates that the difference between the mean final placements of these two groups is approx. 4.4 standard errors apart, which is strong evidence of a meaningful difference. 
 Our result when comparing position 2 to all other positions combined, is that we observe significantly worse average placement for postion 2. This must be taken with a slight grain of salt however as we are comparing entries at position 2 with entries from all other positions - creating an imbalance as we do know other draw positions have similar, if not as profound, disadvantages. However, this score is still significant enough that even compared against a field of positions, that we can say it is a worse draw position.
-Our hypothesis - that starting at 2nd draw position aka the Death-Slot is signifanctly worse than any other draw position, means that our null hypothesis is that there is no difference. If the p-value is smaller than 0.05 that's ordinarily enough to reject the null hypothesis. Ours is much lower at just 0.0005, meaning that it is highly unlikely that entries starting at the 2nd draw position have performed badly by mere chance alone - strongly suggesting that the 2nd position does in fact performe statistically worse.
+Our hypothesis, as written at the top of the page, - that starting at 2nd draw position aka the Death-Slot is worse than any other draw position, means that our null hypothesis is that there is no difference. If the p-value is smaller than 0.05 that's ordinarily enough to reject the null hypothesis. Ours is much lower at just 0.0005, meaning that it is highly unlikely that entries starting at the 2nd draw position have performed badly by mere chance alone - strongly suggesting that the 2nd position does in fact performe statistically worse.
 """)

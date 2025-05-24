@@ -13,7 +13,9 @@ from Modules import data_exploration as de
 from scipy.stats import zscore, ttest_ind
 
 st.title("Death-Slot Analysis - Draw Positions Semi-Finals")
-st.subheader("Let's see if the infamous 2nd draw position also applies to the semi-finals.", divider='rainbow')
+st.subheader("Let's see if the infamous 2nd draw position aka 'Death Slot' also applies to the semi-finals.", divider='rainbow')
+
+st.write("**Hypothesis 3:** Slot 2 is often referred to as the “death slot” as no contestant performing at this position has ever won Eurovision, and consistently rank lower than other positions, so a song performing second will perform worse in the final result than it would otherwise.")
 
 # Load data
 csv_semis_path = '../Data/semifinalists_cleaned.csv'
@@ -151,12 +153,12 @@ st.markdown("""
 Draw position 2:
 - T-statistic: **3.159**
 - P-value: **0.003**
-- This low p-value allows us to **reject the null hypothesis**, confirming our original hypothesis that **position 2 performs significantly worse than others**, and not just due to random chance.
+- This low p-value allows us to **reject the null hypothesis**, confirming our original hypothesis, as written at the top of the page, that **position 2 performs worse than other draw positions**, and not just due to random chance.
 
 Draw position 3:
 - T-statistic: **2.617**
 - P-value: **0.013**
-- This p-value, while not as low, means we can also **reject the null hypothesis**. There's enough evidence to support that position 3 is unfavourable, but not to same extent as that infamous position 2.
+- This p-value, while not as low, means we can also **reject the null hypothesis**, in this case our hypothesis might simply be "That certain positions perform worse than others". There's enough evidence to support that position 3 is unfavourable, but not to same extent as that infamous position 2.
 
 The t-statistics indicate that the difference between the mean semi placements of the two groups (X place vs rest of data) is approx. 3.15 and 2.61 standard errors apart respectively, which is strong evidence of a meaningful difference for both placements. 
 Our result when comparing position 2 and 3 to all other positions combined, is that we observe worse average placement for postion 2 and 3. This must be taken with a slight grain of salt however as we are comparing with entries from all other positions - creating an imbalance. However, these scores are still significant enough that even compared against a field of positions, that we can say they are worse draw positions.
