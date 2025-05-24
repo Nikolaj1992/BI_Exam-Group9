@@ -24,6 +24,7 @@ st.markdown("""
 - Classification of Eurovision Winners
 - Clustering of Countries by Voting Patterns 
 - Clustering for Style and Country Patterns
+- Death Slot Analysis
 - Performance Order Analysis
 - Style impact on Final results
 
