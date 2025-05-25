@@ -24,6 +24,8 @@ Motivation:
 
 Theoretical foundation:
 * Hypothesis 3: Used values such as mean, median and standard variation along with z-scores and Welch's T-tests to discern if the 2nd draw positions was in fact a "Death Slot" (if it was giving statistically bad enough results to be worse than mere random chance could explain).
+* Hypothesis 4: Used linear regression, normalization via StandardScaler and a stacking regressor made up of a combination of linear regression and random forest to make predictions of how running order influences jury points and televote points more accurate.
+* Hypothesis 5: To investigate whether musical style influences Eurovision outcomes, this project applies k-means clustering, a widely used unsupervised learning algorithm.
 
 Argumentation of choices:
 * The following methodological and analytical choices were made based on the goals of the project and the nature of the available data.
