@@ -23,8 +23,14 @@ Motivation:
 * Our motivation is to use Eurovision data to better understand the contest and what impacts the results of the contest. A few members of the team regularly follow and watch Eurovision, and as such there's an interest in better understanding the outcomes of the contest with data.
 
 Theoretical foundation:
+* Hypothesis 1: To investigate whether running order influences Eurovision outcomes, this project applies Linear Regression and Classification, (Supervised Learning) Used Machine learning for Predicting outcomes based on running order.
+
+* Hypothesis 2: Used descriptive statistics (mean, median) and comparative analysis through t-tests to examine whether late-performing contestants systematically receive higher scores than early performers. Applied correlation analysis to measure the linear relationship between performance position and scoring outcomes, while conducting separate jury vs. televote analysis to identify potential differences in bias susceptibility between professional and public voting.
+
 * Hypothesis 3: Used values such as mean, median and standard variation along with z-scores and Welch's T-tests to discern if the 2nd draw positions was in fact a "Death Slot" (if it was giving statistically bad enough results to be worse than mere random chance could explain).
+
 * Hypothesis 4: Used linear regression, normalization via StandardScaler and a stacking regressor made up of a combination of linear regression and random forest to make predictions of how running order influences jury points and televote points more accurate.
+
 * Hypothesis 5: To investigate whether musical style influences Eurovision outcomes, this project applies k-means clustering, a widely used unsupervised learning algorithm.
 
 Argumentation of choices:
