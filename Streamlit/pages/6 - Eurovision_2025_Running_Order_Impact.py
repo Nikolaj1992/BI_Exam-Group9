@@ -5,19 +5,8 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 # Creating a dictionary with Eurovision 2025 data
-data = {
-    "year": [2025] * 26,
-    "final_draw_position": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26],
-    "country": ["Norway", "Luxembourg", "Estonia", "Israel", "Lithuania", "Spain", "Ukraine", "United Kingdom", "Austria", "Iceland", 
-                "Latvia", "Netherlands", "Finland", "Italy", "Poland", "Germany", "Greece", "Armenia", "Switzerland", "Malta", 
-                "Portugal", "Denmark", "Sweden", "France", "San Marino", "Albania"],
-    "final_televote_points": [67, 24, 258, 297, 62, 10, 158, 0, 178, 33, 42, 42, 108, 97, 139, 74, 126, 30, 0, 8, 13, 2, 195, 50, 18, 173],
-    "final_jury_points": [22, 23, 98, 60, 34, 27, 60, 88, 258, 0, 116, 133, 88, 159, 17, 77, 105, 42, 214, 83, 37, 45, 126, 180, 9, 45],
-    "final_place": [18, 22, 3, 2, 16, 24, 9, 19, 1, 25, 13, 12, 11, 5, 14, 15, 6, 20, 10, 17, 21, 23, 4, 7, 26, 8],
-    "final_total_points": [89, 47, 356, 357, 96, 37, 218, 88, 436, 33, 158, 175, 196, 256, 156, 151, 231, 72, 214, 91, 50, 47, 321, 230, 27, 218]
-}
-
-df = pd.DataFrame(data)
+csv_file_path = '../Data/eurovision_2025_grand_final.csv'
+df = pd.read_csv(csv_file_path, encoding='windows-1252')
 
 # Display the first 5 rows
 st.write("# Eurovision 2025 Grand Final Results")
