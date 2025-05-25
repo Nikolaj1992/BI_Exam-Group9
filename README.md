@@ -23,12 +23,11 @@ Motivation:
 * Our motivation is to use Eurovision data to better understand the contest and what impacts the results of the contest. A few members of the team regularly follow and watch Eurovision, and as such there's an interest in better understanding the outcomes of the contest with data.
 
 Theoretical foundation:
-* What???
+* Hypothesis 3: Used values such as mean, median and standard variation along with z-scores and Welch's T-tests to discern if the 2nd draw positions was in fact a "Death Slot" (if it was giving statistically bad enough results to be worse than mere random chance could explain).
 
 Argumentation of choices:
 * The following methodological and analytical choices were made based on the goals of the project and the nature of the available data.
-Historical Data Analysis:
-* Eurovision offers a rich and consistent dataset over decades. Analyzing historical data allows for trend identification over time, especially concerning running order and voting patterns.
+* Historical Data Analysis: Eurovision offers a rich and consistent dataset over decades. Analyzing historical data allows for trend identification over time, especially concerning running order and voting patterns.
 * Division into Thirds (Early, Middle, Late): Breaking the performance order into thirds provides a simple but effective structure to compare early versus late performance outcomes. 
 * Slot 2 Analysis ("Death Slot"): The unique attention given to position 2 by fans and analysts makes it worthy of special investigation. It’s a commonly discussed anomaly, and this study aims to verify if it’s statistically significant or merely a myth.
 * Separate Analysis of Jury vs. Televote: The dual voting system enables an exploration of whether professional juries are less susceptible to performance order bias than the public. This comparison strengthens the analysis by offering a control variable.
