@@ -54,12 +54,12 @@ classification_report_text = """
 Accuracy: 0.9028
               precision    recall  f1-score   support
 
-           0       0.88      0.95      0.91        37
-           1       0.94      0.86      0.90        35
+           0       0.95      0.97      0.96        39
+           1       0.96      0.93      0.95        28
 
-    accuracy                           0.90        72
-   macro avg       0.91      0.90      0.90        72
-weighted avg       0.91      0.90      0.90        72
+    accuracy                           0.96        67
+   macro avg       0.96      0.95      0.95        67
+weighted avg       0.96      0.96      0.95        67
 """
 
 st.subheader("Classification Report")
