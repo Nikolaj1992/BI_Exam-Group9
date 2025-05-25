@@ -77,6 +77,10 @@ mean_final_place = df_filtered.groupby('cluster')['final_place'].mean()
 # 3. Most common style per cluster
 most_common_styles = df_filtered.groupby('cluster')['style'].agg(lambda x: x.value_counts().idxmax())
 
+st.write("Using clustering to we've created clusters that each contain many different styles, based on final place. Clusters with lower average final place results ( such as clusters 5 and 3) represent more successful entries across all styles - while clusters 1 and 4 have mid-performance with clusters 0 and 2 cot-ntaining the worst results. With the exception of Opera only being present in clusters 4 and 5, we see that each clusters contains songs from all styles. Meanwhile the table below shows us that across all clusters, pop is the dominant style, which goes well in hand with the fact that, even though trends change, pop has always been super popular in Eurovision.")
+
+st.write("Choosing a specific year from the dropdown on the left however, we can explore specific data and quickly find that while pop is dominant overall, many years have seen other styles be more common.")
+
 # Combined stats table
 summary_df = pd.DataFrame({
     'Count': cluster_counts,

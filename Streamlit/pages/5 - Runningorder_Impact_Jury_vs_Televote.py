@@ -3,6 +3,8 @@ import numpy as np
 import seaborn as sbn
 import matplotlib.pyplot as plt
 import streamlit as st
+import sys 
+import os
 
 from sklearn.model_selection import train_test_split
 from sklearn.impute import SimpleImputer
@@ -11,6 +13,10 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import StackingRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
+
+# So we can correctly locate data and also our modules
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 from Modules import utils as utl
 from Modules import data_exploration as de
 from Modules import machine_learning as ml
