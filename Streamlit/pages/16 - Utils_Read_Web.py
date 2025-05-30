@@ -32,7 +32,7 @@ question = st.text_input("Ask a question based on the webpage:")
 if question:
     with st.spinner("Loading, processing, and answering..."):
         try:
-            # You already have these initialized
+         
             embeddings = OllamaEmbeddings(model="llama3.2:3b")
             vecDB = InMemoryVectorStore(embeddings)
             llm = OllamaLLM(model="gemma3:12b")
