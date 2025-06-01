@@ -51,7 +51,7 @@ if st.button("Show Confusion Matrix and Metrics"):
     
 # Classification report 
 classification_report_text = """
-Accuracy: 0.9028
+Accuracy: 0.9552
               precision    recall  f1-score   support
 
            0       0.95      0.97      0.96        39
